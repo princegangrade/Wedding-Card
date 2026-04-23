@@ -29,6 +29,7 @@ export default {
       fontFamily: {
         serif: ['"Playfair Display"', '"Noto Serif Telugu"', 'Georgia', 'serif'],
         sans: ['Inter', '"Noto Sans Telugu"', 'system-ui', 'sans-serif'],
+        cursive: ['"Great Vibes"', 'cursive'],
       },
       backgroundImage: {
         'gold-gradient': 'linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C)',

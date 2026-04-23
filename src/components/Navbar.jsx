@@ -42,9 +42,9 @@ const Navbar = () => {
 
   // Dynamic Styles based on section
   let navBg = 'bg-transparent py-5';
-  let textStyle = 'text-primary drop-shadow-md';
-  let btnStyle = 'border-primary text-primary bg-white/70 hover:bg-primary hover:text-white backdrop-blur-sm shadow-sm';
-  let logoStyle = 'text-primary';
+  let textStyle = 'text-gold drop-shadow-md';
+  let btnStyle = 'border-gold text-gold bg-white/10 hover:bg-gold hover:text-primary backdrop-blur-sm shadow-sm';
+  let logoStyle = 'text-gold';
 
   if (scrolled) {
     if (activeSection === 'invitation') {
@@ -68,12 +68,12 @@ const Navbar = () => {
   return (
     <nav className={`fixed w-full z-40 transition-all duration-500 ${navBg}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center">
-          <div className="flex-shrink-0 cursor-pointer">
+        <div className="flex justify-center items-center">
+          {/* <div className="flex-shrink-0 cursor-pointer">
             <Link to="home" smooth={true} duration={500} className={`font-serif text-xl sm:text-2xl font-bold transition-colors duration-500 ${logoStyle}`}>
               {config.couple.groom[0]} & {config.couple.bride[0]}
             </Link>
-          </div>
+          </div> */}
           
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">

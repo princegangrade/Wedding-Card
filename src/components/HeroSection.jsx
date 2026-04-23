@@ -45,15 +45,37 @@ const HeroSection = () => {
   }, [config.weddingDate]);
 
   return (
-    <section id="home" className="relative h-screen flex flex-col justify-center items-center text-center bg-ivory overflow-hidden">
-      <div className="absolute inset-0 bg-mandala-pattern opacity-10 pointer-events-none"></div>
+    <section id="home" className="relative h-screen flex flex-col justify-center items-center text-center overflow-hidden" style={{
+      background: 'linear-gradient(135deg, #3b0012 0%, #4b0015 50%, #3b0012 100%)'
+    }}>
+      {/* Left Floral Frame - Top Left Corner */}
+      <div className="absolute top-0 left-0 w-40 md:w-80 h-34 md:h-80 pointer-events-none z-5 opacity-85">
+        <img src="/frame1-top.PNG" alt="Left Floral Frame" className="w-full h-full object-contain" />
+      </div>
+
+      {/* Right Floral Frame - Top Right Corner */}
+      <div className="absolute top-0 right-0 w-40 md:w-80 h-34 md:h-80 pointer-events-none z-5 opacity-85">
+        <img src="/frame2-top.PNG" alt="Right Floral Frame" className="w-full h-full object-contain" />
+      </div>
+
+      {/* Bottom Left Floral Frame */}
+      <div className="absolute bottom-0 left-0 w-40 md:w-80 h-34 md:h-80 pointer-events-none z-5 opacity-85">
+        <img src="/frame1.PNG" alt="Bottom Left Floral Frame" className="w-full h-full object-contain" />
+      </div>
+
+      {/* Bottom Right Floral Frame */}
+      <div className="absolute bottom-0 right-0 w-40 md:w-80 h-34 md:h-80 pointer-events-none z-5 opacity-85">
+        <img src="/frame2.PNG" alt="Bottom Right Floral Frame" className="w-full h-full object-contain" />
+      </div>
+      
+      <div className="absolute inset-0 bg-mandala-pattern opacity-5 pointer-events-none"></div>
       
       {/* Small Hearts Popping Background */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         {hearts.map((heart) => (
           <motion.div
             key={`heart-${heart.id}`}
-            className="absolute text-red-500/50"
+            className="absolute text-amber-600/30"
             style={{
               left: heart.left,
               top: heart.top,
@@ -61,7 +83,7 @@ const HeroSection = () => {
             initial={{ scale: 0, opacity: 0, y: 0 }}
             animate={{ 
               scale: [0, heart.scale, 0], 
-              opacity: [0, 0.9, 0],
+              opacity: [0, 0.6, 0],
               y: [0, -heart.yOffset]
             }}
             transition={{ 
@@ -80,14 +102,25 @@ const HeroSection = () => {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="z-10 px-4"
+        className="z-10 px-4 flex flex-col items-center"
       >
-        <p className="text-accent-green font-medium tracking-widest uppercase mb-4 text-sm md:text-base">
+        {/* Ganesha Icon - Top Center */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.2 }}
+          className="mb-1"
+        >
+          <img src="/Ganesha-ICON.png" alt="Ganesha Icon" className="w-28 md:w-48 h-28 md:h-48 drop-shadow-lg" />
+        </motion.div>
+
+        <p className="text-amber-300 font-medium tracking-widest uppercase mb-2 md:mb-3 text-xs md:text-sm drop-shadow-md">
           {config.hero.title}
         </p>
         
         <motion.h1 
-          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-serif mb-6 text-primary drop-shadow-sm leading-tight py-2"
+          className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-cursive mb-4 md:mb-6 drop-shadow-lg leading-tight py-2"
+          style={{ color: '#f5e6b3' }}
           initial="hidden"
           animate="visible"
           variants={{
@@ -108,7 +141,7 @@ const HeroSection = () => {
           ))}
           <motion.span 
             variants={{ hidden: { opacity: 0, scale: 0.5 }, visible: { opacity: 1, scale: 1 } }} 
-            className="text-gold mx-2 md:mx-4 inline-block origin-bottom"
+            className="text-gold mx-1 md:mx-2 lg:mx-3 inline-block origin-bottom"
           >
             &
           </motion.span>
@@ -119,17 +152,21 @@ const HeroSection = () => {
           ))}
         </motion.h1>
         
-        <p className="text-gray-700 italic max-w-lg mx-auto mb-10 text-lg">
+        <p className="text-amber-100 italic max-w-md md:max-w-lg mx-auto mb-8 md:mb-10 text-sm md:text-base drop-shadow-md" style={{ color: '#e8d9b5' }}>
           {config.hero.subtitle}
         </p>
         
-        <div className="flex justify-center gap-2 sm:gap-4 md:gap-8">
+        <div className="flex justify-center gap-2 sm:gap-3 md:gap-6">
           {Object.entries(timeLeft).map(([unit, value]) => (
-            <div key={unit} className="flex flex-col items-center p-3 md:p-5 border-y-2 border-gold/40 rounded-3xl bg-white/40 backdrop-blur-sm shadow-inner min-w-[60px] sm:min-w-[70px] md:min-w-[100px]">
-              <span className="text-3xl md:text-5xl font-serif text-primary">
+            <div key={unit} className="flex flex-col items-center p-3 md:p-5 border-2 rounded-2xl shadow-2xl min-w-[55px] sm:min-w-[65px] md:min-w-[90px]" style={{
+              borderColor: '#d4af37',
+              backgroundColor: 'rgba(139, 69, 19, 0.3)',
+              backdropFilter: 'blur(10px)'
+            }}>
+              <span className="text-3xl md:text-5xl font-serif" style={{ color: '#f5e6b3' }}>
                 {String(value).padStart(2, '0')}
               </span>
-              <span className="text-xs md:text-sm uppercase tracking-wider text-gray-700 mt-2 font-medium">
+              <span className="text-xs md:text-sm uppercase tracking-wider mt-1 md:mt-2 font-medium" style={{ color: '#d4af37' }}>
                 {config.countdown[unit]}
               </span>
             </div>
