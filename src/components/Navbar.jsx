@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-scroll';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../LanguageContext';
 
 const Navbar = () => {
@@ -13,7 +14,7 @@ const Navbar = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
 
-      const sections = ['home', 'invitation', 'events'];
+      const sections = ['home', 'invitation', 'our-story', 'events'];
       let current = 'home';
       
       for (const section of sections) {
@@ -37,6 +38,7 @@ const Navbar = () => {
   const navLinks = [
     { name: config.nav.home, to: 'home' },
     { name: config.nav.invitation, to: 'invitation' },
+    { name: config.nav.ourStory, to: 'our-story' },
     { name: config.nav.events, to: 'events' },
   ];
 
@@ -120,25 +122,45 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-      {isOpen && (
-        <div className="md:hidden bg-white shadow-xl absolute w-full left-0 top-full border-t border-gray-100">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-center">
-            {navLinks.map((link) => (
-              <Link
-                key={link.to}
-                to={link.to}
-                smooth={true}
-                duration={500}
-                offset={0}
-                className="cursor-pointer block px-3 py-4 text-base font-medium text-gray-800 hover:text-gold transition-colors border-b border-gray-50 w-full text-center"
-                onClick={() => setIsOpen(false)}
-              >
-                {link.name}
-              </Link>
-            ))}
-          </div>
-        </div>
-      )}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="md:hidden bg-primary shadow-xl absolute w-full left-0 top-full border-t border-gold/30 overflow-hidden"
+            style={{
+              background: 'linear-gradient(135deg, rgba(59, 0, 18, 0.95) 0%, rgba(75, 0, 21, 0.95) 50%, rgba(59, 0, 18, 0.95) 100%)',
+              backdropFilter: 'blur(10px)'
+            }}
+          >
+            <div className="px-4 pt-4 pb-8 space-y-2 flex flex-col items-center">
+              {navLinks.map((link, index) => (
+                <motion.div
+                  key={link.to}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ delay: 0.1 + index * 0.05, duration: 0.3 }}
+                  className="w-full"
+                >
+                  <Link
+                    to={link.to}
+                    smooth={true}
+                    duration={500}
+                    offset={0}
+                    className="cursor-pointer block px-3 py-4 text-lg font-serif font-medium text-amber-100 hover:text-gold transition-colors border-b border-gold/10 w-full text-center tracking-wider uppercase drop-shadow-md"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {link.name}
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };

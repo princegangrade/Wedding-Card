@@ -6,8 +6,8 @@
     },
     "weddingDate": "2026-04-26T11:59:00+05:30",
     "contact": {
-      "whatsappNumber": "+919876543210",
-      "email": "hello@weddingwebsite.com"
+      "whatsappNumber": "+917674907207",
+      "email": "goutham7819@gmail.com"
     },
     "hero": {
       "title": "We are getting married!",
@@ -72,11 +72,28 @@
       "allRights": "All Rights Reserved.",
       "contact": "Contact"
     },
+    "gallery": {
+      "title": "Gallery"
+    },
+    "ourStory": {
+      "paragraphs": [
+        "We weren’t searching for each other—just living our own lives, finding comfort in our routines, families, and friendships.",
+        "Then our families introduced us.",
+        "What began as a simple meeting slowly turned into something meaningful. We started talking, spending time together, traveling, and getting to know each other beyond first impressions.",
+        "She saw in him a kind, genuine, and caring person—someone who made her feel seen, understood, and valued.",
+        "He found in her a warm, strong, and beautiful soul—someone who brought joy, comfort, and meaning into his life.",
+        "Somewhere along the way, without even realizing it, conversations turned into laughter, moments turned into memories, and two lives began to intertwine.",
+        "What started as “just a match” became a choice—made with love, trust, and hope for the future.",
+        "Today, we choose each other—to grow together, to support one another, and to build a life filled with happiness, love, and countless beautiful moments."
+      ],
+      "closing": "Forever"
+    },
     "nav": {
       "home": "Home",
       "invitation": "Invitation",
       "events": "Venue",
       "gallery": "Gallery",
+      "ourStory": "Our Story",
       "rsvp": "RSVP"
     }
   },
@@ -153,11 +170,27 @@
       "allRights": "సర్వ హక్కులు ప్రత్యేకించబడినవి.",
       "contact": "సంప్రదించండి"
     },
+    "gallery": {
+      "title": "గ్యాలరీ"
+    },
+    "ourStory": {
+      "paragraphs": [
+        "మేము ఒకరికొకరు వెతుక్కోలేదు - కేవలం మా సొంత జీవితాలను గడుపుతూ, మా దినచర్యలు, కుటుంబాలు మరియు స్నేహాలలో సౌకర్యాన్ని పొందుతున్నాము.",
+        "అప్పుడు మా కుటుంబాలు మమ్మల్ని పరిచయం చేశాయి.",
+        "ఒక సాధారణ సమావేశంగా ప్రారంభమైనది నెమ్మదిగా అర్థవంతమైనదిగా మారింది. మేము మాట్లాడుకోవడం, కలిసి సమయం గడపడం మరియు ఒకరినొకరు అర్థం చేసుకోవడం ప్రారంభించాము.",
+        "ఆమె అతడిలో దయ, నిజాయితీ మరియు శ్రద్ధ గల వ్యక్తిని చూసింది.",
+        "అతను ఆమెలో వెచ్చని, బలమైన మరియు అందమైన ఆత్మను కనుగొన్నాడు - అతని జీవితంలో ఆనందం, సౌలభ్యం మరియు అర్థాన్ని తెచ్చిన వ్యక్తి.",
+        "ప్రేమ, నమ్మకం మరియు భవిష్యత్తుపై ఆశతో - 'కేవలం ఒక సంబంధం' గా ప్రారంభమైనది ఒక ఎంపికగా మారింది.",
+        "ఈ రోజు, మేము ఒకరినొకరు ఎంచుకున్నాము - కలిసి ఎదగడానికి, ఒకరికొకరు మద్దతు ఇవ్వడానికి మరియు ఆనందం, ప్రేమ మరియు లెక్కలేనన్ని అందమైన క్షణాలతో కూడిన జీవితాన్ని నిర్మించడానికి."
+      ],
+      "closing": "శాశ్వతంగా"
+    },
     "nav": {
       "home": "ప్రారంభం",
       "invitation": "ఆహ్వానం",
       "events": "వేదిక",
       "gallery": "గ్యాలరీ",
+      "ourStory": "మా కథ",
       "rsvp": "సమాచారం"
     }
   }
