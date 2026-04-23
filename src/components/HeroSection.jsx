@@ -119,7 +119,7 @@ const HeroSection = () => {
         </p>
         
         <motion.h1 
-          className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-cursive mb-4 md:mb-6 drop-shadow-lg leading-tight py-2"
+          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-cursive mb-4 md:mb-6 drop-shadow-lg leading-tight py-2"
           style={{ color: '#f5e6b3' }}
           initial="hidden"
           animate="visible"
@@ -156,17 +156,17 @@ const HeroSection = () => {
           {config.hero.subtitle}
         </p>
         
-        <div className="flex justify-center gap-2 sm:gap-3 md:gap-6">
+        <div className="flex justify-center gap-1.5 sm:gap-3 md:gap-6">
           {Object.entries(timeLeft).map(([unit, value]) => (
-            <div key={unit} className="flex flex-col items-center p-3 md:p-5 border-2 rounded-2xl shadow-2xl min-w-[55px] sm:min-w-[65px] md:min-w-[90px]" style={{
+            <div key={unit} className="flex flex-col items-center p-2 md:p-5 border-2 rounded-xl md:rounded-2xl shadow-2xl min-w-[45px] sm:min-w-[60px] md:min-w-[90px]" style={{
               borderColor: '#d4af37',
               backgroundColor: 'rgba(139, 69, 19, 0.3)',
               backdropFilter: 'blur(10px)'
             }}>
-              <span className="text-3xl md:text-5xl font-serif" style={{ color: '#f5e6b3' }}>
+              <span className="text-xl sm:text-2xl md:text-5xl font-serif" style={{ color: '#f5e6b3' }}>
                 {String(value).padStart(2, '0')}
               </span>
-              <span className="text-xs md:text-sm uppercase tracking-wider mt-1 md:mt-2 font-medium" style={{ color: '#d4af37' }}>
+              <span className="text-[10px] sm:text-xs md:text-sm uppercase tracking-wider mt-0.5 md:mt-2 font-medium" style={{ color: '#d4af37' }}>
                 {config.countdown[unit]}
               </span>
             </div>

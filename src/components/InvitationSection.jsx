@@ -1,10 +1,24 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useMemo } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useLanguage } from '../LanguageContext';
 
 const FlowerConfetti = ({ isActive }) => {
-  const flowers = Array.from({ length: 35 });
   const symbols = ['🌸', '🌺', '💮', '🌹', '✨'];
+  
+  // Memoize flowers to avoid random calculations on every render,
+  // making it completely stable and performant.
+  const flowers = useMemo(() => {
+    return Array.from({ length: 12 }).map((_, i) => ({
+      id: i,
+      symbol: symbols[i % symbols.length],
+      left: Math.random() * 100,
+      delay: Math.random() * 2,
+      duration: 4 + Math.random() * 4,
+      xOffset1: Math.random() * 10 - 5,
+      xOffset2: Math.random() * 20 - 10,
+      rotation: Math.random() * 360
+    }));
+  }, []);
 
   return (
     <motion.div 
@@ -13,33 +27,26 @@ const FlowerConfetti = ({ isActive }) => {
       transition={{ duration: 0.8 }}
       className="absolute inset-0 pointer-events-none z-0 overflow-hidden"
     >
-      {isActive && flowers.map((_, i) => {
-        const symbol = symbols[i % symbols.length];
-        const left = Math.random() * 100;
-        const delay = Math.random() * 0.5;
-        const duration = 1.5 + Math.random() * 2;
-        
-        return (
-          <motion.div
-            key={i}
-            initial={{ y: -50, x: `${left}vw`, rotate: 0 }}
-            animate={{ 
-              y: [ -50, 400, 800 ], 
-              x: [ `${left}vw`, `${left + (Math.random() * 10 - 5)}vw`, `${left + (Math.random() * 20 - 10)}vw` ],
-              rotate: Math.random() * 360
-            }}
-            transition={{
-              duration,
-              delay,
-              ease: "linear",
-              repeat: Infinity
-            }}
-            className="absolute -top-10 text-2xl md:text-3xl drop-shadow-md"
-          >
-            {symbol}
-          </motion.div>
-        );
-      })}
+      {isActive && flowers.map((flower) => (
+        <motion.div
+          key={flower.id}
+          initial={{ y: -50, x: `${flower.left}vw`, rotate: 0 }}
+          animate={{ 
+            y: [ -50, 400, 800 ], 
+            x: [ `${flower.left}vw`, `${flower.left + flower.xOffset1}vw`, `${flower.left + flower.xOffset2}vw` ],
+            rotate: flower.rotation
+          }}
+          transition={{
+            duration: flower.duration,
+            delay: flower.delay,
+            ease: "linear",
+            repeat: Infinity
+          }}
+          className="absolute -top-10 text-2xl md:text-3xl drop-shadow-md opacity-80"
+        >
+          {flower.symbol}
+        </motion.div>
+      ))}
     </motion.div>
   );
 };

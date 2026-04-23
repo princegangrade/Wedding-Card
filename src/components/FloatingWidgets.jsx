@@ -15,22 +15,23 @@ const FloatingWidgets = () => {
           await audioRef.current.play();
           setIsPlaying(true);
         } catch (error) {
-          console.log("Autoplay prevented by browser. Waiting for user interaction.");
-
-          const handleFirstInteraction = () => {
+          // Browser blocked autoplay. Wait for a valid user gesture (click/tap).
+          const handleFirstInteraction = async () => {
             if (audioRef.current && !isPlaying) {
-              audioRef.current.play().then(() => {
+              try {
+                await audioRef.current.play();
                 setIsPlaying(true);
-              }).catch(e => console.error(e));
+                // Remove listeners once successfully played
+                document.removeEventListener('click', handleFirstInteraction);
+                document.removeEventListener('touchstart', handleFirstInteraction);
+              } catch (e) {
+                // If still blocked, just silently fail until next interaction
+              }
             }
-            document.removeEventListener('click', handleFirstInteraction);
-            document.removeEventListener('touchstart', handleFirstInteraction);
-            document.removeEventListener('scroll', handleFirstInteraction);
           };
-
+          
           document.addEventListener('click', handleFirstInteraction);
           document.addEventListener('touchstart', handleFirstInteraction);
-          document.addEventListener('scroll', handleFirstInteraction, { once: true });
         }
       };
 
@@ -83,7 +84,7 @@ We look forward to sharing this beautiful moment with you.: ${window.location.hr
       </a>
 
       {/* Hidden audio element */}
-      <audio ref={audioRef} loop />
+      <audio ref={audioRef} autoPlay loop />
     </div>
   );
 };
